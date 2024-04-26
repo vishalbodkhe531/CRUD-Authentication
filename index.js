@@ -11,6 +11,10 @@ DatabaseConnection();
 
 const server = express();
 
+server.get("/", (req, res) => {
+  res.send("Welcome to home page");
+})
+
 server.use(
   cors({
     options: [process.env.FORNTENDURL],

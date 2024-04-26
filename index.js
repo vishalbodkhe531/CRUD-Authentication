@@ -4,11 +4,19 @@ import { DatabaseConnection } from "./data/data.js";
 import UserRoutes from "./routes/user.routes.js";
 import { errorMiddleware } from "./middleware/error.middleware.js";
 import cookieParser from "cookie-parser";
+import cors from "cors";
 config({ path: "./config/.env" });
 
 DatabaseConnection();
 
 const server = express();
+
+server.use(
+  cors({
+    options: [process.env.FORNTENDURL],
+    methods: ["GET", "POST", "PUT", "DELETE"],
+  })
+);
 
 server.use(cookieParser());
 
